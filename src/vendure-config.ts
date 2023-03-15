@@ -69,10 +69,8 @@ export const config: VendureConfig = {
   // },
   plugins: [
     StripePlugin.init({
-      apiKey:
-        'sk_test_51Mbe6PSBzNgGxdJjW1UI7PPQ09ZC1OEY5iM1rpe0XSy0wqqwCkw0eg4BIOjENUGnoQtuI8TsU91DNxes3kVDU96R00vNICsYmq',
-      webhookSigningSecret:
-        'whsec_e4a24049367d91b8541ad6b4d1e6572c29ed19bf7f9d0e5a1d3ace7009578bc9',
+      apiKey: process.env.STRIPE_SECRET_KEY,
+      webhookSigningSecret: process.env.APP_ENV,
       // This prevents different customers from using the same PaymentIntent
       storeCustomersInStripe: false,
     }),
@@ -104,12 +102,12 @@ export const config: VendureConfig = {
       },
       transport: {
         type: 'smtp',
-        host: 'smtp.gmail.com',
-        port: 587,
+        host: process.env.GMAIL_HOST,
+        port: process.env.GMAIL_PORT,
         secure: false,
         auth: {
-          user: 'imtiyazmicro81@gmail.com',
-          pass: 'npsogfcoqrznoged',
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS,
         },
       },
     }),
